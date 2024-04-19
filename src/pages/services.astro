@@ -1,9 +1,7 @@
 ---
 // Import necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
-import MainSection from "@components/ui/blocks/MainSection.astro";
-import LeftSection from "@components/ui/blocks/LeftSection.astro";
-import RightSection from "@components/ui/blocks/RightSection.astro";
+
 import FeaturesStats from "@components/sections/features/FeaturesStats.astro";
 
 import { createCards } from 'src/utils/services.js'; 
@@ -19,6 +17,7 @@ const pageTitle: string = `Services | ${SITE.title}`;
 <style>
   @import 'src\styles\services.css';  
 </style>
+
 
 <MainLayout>
   <!--FeaturesStats section showcases essential stats valuable to users-->
@@ -51,7 +50,7 @@ const pageTitle: string = `Services | ${SITE.title}`;
     fetch('data.json')
       .then(response => response.json())
       .then(data => {
-        const cardContainer = document.getElementById('card-container'); // Get container element
+        const cardContainer = document.getElementById('card-container'); 
        if (cardContainer) {
         // Loop through each card in the data array
         data.forEach((cardData: CardData) => {
@@ -108,6 +107,9 @@ const pageTitle: string = `Services | ${SITE.title}`;
 
 
   </div>
+
+
+
   <FeaturesStats
     title="By the Numbers"
     subTitle="Our commitment to quality and reliability is evident in every project we undertake. At ScrewFast, we are dedicated to delivering industry-leading services that ensure your construction projects are built to last."
