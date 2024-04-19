@@ -1,0 +1,20 @@
+[
+  {
+    "image": "src/images/packages_images/pack1.jpg", 
+    "title": "Basic Package",
+    "description": "This package is perfect for small projects or those on a tight budget. It includes all the essentials to get you started.",
+    "price": 19.99
+  },
+  {
+    "image": "src/images/packages_images/pack1.jpg", 
+    "title": "Standard Package",
+    "description": "Our most popular package! This option provides a good balance of features and affordability, ideal for most projects.",
+    "price": 49.99
+  },
+  {
+    "image": "src/images/packages_images/pack1.jpg",
+    "title": "Premium Package",
+    "description": "This comprehensive package is loaded with features and is perfect for complex projects or those requiring the very best.",
+    "price": 99.99
+  }
+]

@@ -6,34 +6,108 @@ import LeftSection from "@components/ui/blocks/LeftSection.astro";
 import RightSection from "@components/ui/blocks/RightSection.astro";
 import FeaturesStats from "@components/sections/features/FeaturesStats.astro";
 
+import { createCards } from 'src/utils/services.js'; 
+
 // Import necessary images
+
 
 import { SITE } from "@data/constants";
 
 const pageTitle: string = `Services | ${SITE.title}`;
 
 ---
+<style>
+  @import 'src\styles\services.css';  
+</style>
 
 <MainLayout>
- 
-  
-   <!-- --------------------------------------------------------------------------- -->
-<!-- new astro  -->
-
-
-
-
-
-
-
-
-
-   <!-- --------------------------------------------------------------------------- -->
-
-
-
-
   <!--FeaturesStats section showcases essential stats valuable to users-->
+<div class="package_class">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stylish Cards - Demo</title>
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container" style="margin-top:50px;">
+    <div class="row" id="card-container"> </div>
+  </div>
+
+  <script>
+    interface CardData {
+  image: string;
+  title: string;
+  description: string;
+  price: number; 
+}
+    // Fetch data from JSON file (replace 'data.json' with your actual file path)
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        const cardContainer = document.getElementById('card-container'); // Get container element
+       if (cardContainer) {
+        // Loop through each card in the data array
+        data.forEach((cardData: CardData) => {
+          // Create card elements dynamically based on card data
+          const card = document.createElement('div');
+          card.classList.add('col-md-3'); // Adjust class for desired layout
+          card.classList.add('card-sl');
+
+          const cardImage = document.createElement('div');
+          cardImage.classList.add('card-image');
+          cardImage.innerHTML = `<img src="${cardData.image}" />`; // Use cardData.image property
+
+          const cardAction = document.createElement('a');
+          cardAction.classList.add('card-action');
+          cardAction.href = '#'; // Adjust link behavior if needed
+          cardAction.innerHTML = `<i class="fa fa-heart"></i>`;
+
+          const cardHeading = document.createElement('div');
+          cardHeading.classList.add('card-heading');
+          cardHeading.textContent = cardData.title; // Use cardData.title property
+
+          const cardText = document.createElement('div');
+          cardText.classList.add('card-text');
+          cardText.textContent = cardData.description; // Use cardData.description property
+
+          const cardPrice = document.createElement('div');
+          cardPrice.classList.add('card-text');
+          cardPrice.textContent = `$${cardData.price}`; // Use cardData.price property (assuming a number)
+
+          const cardButton = document.createElement('a');
+          cardButton.classList.add('card-button');
+          cardButton.href = '#'; // Adjust link behavior if needed
+          cardButton.textContent = 'Purchase';
+
+          // Add elements to the card structure
+          card.appendChild(cardImage);
+          card.appendChild(cardAction);
+          card.appendChild(cardHeading);
+          card.appendChild(cardText);
+          card.appendChild(cardPrice);
+          card.appendChild(cardButton);
+
+          // Append the card to the container element
+          cardContainer.appendChild(card);
+        });
+      }else {
+            console.error("Failed to find element with ID 'card-container'");
+      }
+          })
+      .catch(error => console.error(error)); // Handle potential errors during data fetching
+  </script>
+</body>
+</html>
+
+
+  </div>
   <FeaturesStats
     title="By the Numbers"
     subTitle="Our commitment to quality and reliability is evident in every project we undertake. At ScrewFast, we are dedicated to delivering industry-leading services that ensure your construction projects are built to last."
